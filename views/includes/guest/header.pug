@@ -1,0 +1,51 @@
+md-toolbar(class="md-whiteframe-glow-z1" md-colors="{backgroundColor: 'default-primary-500'}")
+	div(class="md-toolbar-tools docs-toolbar-tools" tabIndex="-1")
+
+		div(layout="row" layout-xs="column" flex class="fill-height")
+			h2(class="md-toolbar-item md-headline") AMN Offers
+			span(flex)
+			div(class="md-toolbar-item docs-tools" layout="row")
+
+				md-menu(md-position-mode="target-right target" ng-if="isAuth.auth")
+					md-button(aria-label="profile" class="md-icon-button" ng-click="$mdMenu.open()")
+						md-icon(md-menu-origin class="material-icon" style="color: #fff !important;" ) account_circle
+					md-menu-content(width="4")
+						md-menu-item
+							md-button(href="./{{ isAuth.user.usermode }}/#!/")
+								div(layout="row" flex)
+									p(flex) Account
+									md-icon(md-menu-align-target class="material-icon") account_circle
+						md-menu-item
+							md-button(disabled="disabled" ng-click="")
+								div(layout="row" flex)
+									p(flex) Settings
+									md-icon(md-menu-align-target class="material-icon") settings
+						md-menu-divider
+						md-menu-item
+							md-button(ng-click="appLogout()")
+								div(layout="row" flex)
+									p(flex) Logout
+									md-icon(md-menu-align-target class="material-icon") power_settings_new
+				md-menu(md-position-mode="target-right target" show-xs)
+					md-button(aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)")
+						md-icon(md-menu-origin class="material-icon") more_vert
+					md-menu-content(width="4")
+						md-menu-item()
+							md-button
+								div(layout="row" flex)
+									p(flex) Option 1
+									md-icon(md-menu-align-target class="material-icon") more_vert
+						md-menu-item()
+							md-button
+								div(layout="row" flex)
+									p(flex) Option 1
+									md-icon(md-menu-align-target class="material-icon") more_vert
+				md-button(href="/#!/" class="md-icon-button" aria-label="Home")
+					md-tooltip Home Page
+					md-icon(class="material-icon" style="color: #fff !important;" ) home
+				md-button(href="/#!/portfolio" class="md-icon-button" aria-label="portfolio")
+					md-tooltip Portfolio
+					md-icon(class="material-icon" style="color: #fff !important;" ) view_carousel
+				md-button(href="/#!/contact" class="md-icon-button" aria-label="contact")
+					md-tooltip Contact Me
+					md-icon(class="material-icon" style="color: #fff !important;" ) perm_phone_msg

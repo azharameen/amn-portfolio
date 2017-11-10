@@ -1,0 +1,63 @@
+<md-content flex>
+	<md-card>
+		<md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 flex md-truncate>Dashboard</h2>
+
+                <span flex></span>
+                <site-header back forward></site-header>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdMenu.open()">
+                        <md-icon class="material-icon">more_vert</md-icon>
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="" aria-label="Refresh"><md-icon class="material-icon">refresh</md-icon>Refresh</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="" aria-label="Print"><md-icon class="material-icon">print</md-icon>Print</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="" aria-label="Export to CSV"><md-icon class="material-icon">insert_drive_file</md-icon>Export CSV</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+
+		<md-card-content>
+			<form method="POST" accept-charset="utf-8" id="loginForm" name="loginForm" ng-submit="loginFormSubmit(loginForm);">
+				<md-input-container class="md-block" flex>
+					<label>Username</label>
+					<input type="text" ng-model="login.user" name="user" id="user" autocomplete="off" required >
+					<div ng-messages="loginForm.user.$error" role="alert">
+                        <div ng-message="required">Username is required </div>
+                    </div>
+				</md-input-container>
+				<md-input-container class="md-block" flex>
+					<label>Password</label>
+					<input type="text" ng-model="login.pass" name="pass" id="pass" autocomplete="off" required >
+					<div ng-messages="loginForm.pass.$error" role="alert">
+                        <div ng-message="required">Password is required </div>
+                    </div>
+				</md-input-container>
+
+				<md-button type="submit" class="md-raised md-primary" ng-disabled="false" aria-label="description">Login</md-button>
+			</form>
+		</md-card-content>
+
+		<md-card-actions layout="row" layout-align="start center">
+			<md-card-icon-actions>
+				<md-button class="md-icon-button" aria-label="Refresh">
+					<md-tooltip> Refresh Content</md-tooltip>
+					<md-icon class="material-icon">refresh</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Back">
+					<md-tooltip> Go Back</md-tooltip>
+					<md-icon class="material-icon">arrow_back</md-icon>
+				</md-button>
+			</md-card-icon-actions>
+		</md-card-actions>
+
+	</md-card>
+</md-content>

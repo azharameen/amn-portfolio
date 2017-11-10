@@ -1,0 +1,90 @@
+<md-content flex>
+	<md-card>
+		<md-toolbar class="md-toolbar-tools">
+			<h2 flex md-truncate> Contact</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" href="https://www.linkedin.com/in/azhar-ameen/​" target="_blank">
+				<md-tooltip>LinkedIn</md-tooltip>
+				<md-icon md-svg-icon="./img/social/linkedin.svg" aria-label="linkedin"></md-icon>
+			</md-button>
+			<md-button class="md-icon-button" href="https://plus.google.com/u/0/111026771778227488436" target="_blank">
+				<md-tooltip>Google Plus</md-tooltip>
+				<md-icon md-svg-icon="./img/social/googleplus.svg" aria-label="googleplus"></md-icon>
+			</md-button>
+			<md-button class="md-icon-button">
+				<md-tooltip>Facebook</md-tooltip>
+				<md-icon md-svg-icon="./img/social/facebook.svg" aria-label="facebook"></md-icon>
+			</md-button>
+			<md-button class="md-icon-button" href="https://twitter.com/azharameen52" target="_blank">
+				<md-tooltip>Twitter</md-tooltip>
+				<md-icon md-svg-icon="./img/social/twitter.svg" aria-label="twitter"></md-icon>
+			</md-button>
+			<md-button class="md-icon-button">
+				<md-tooltip>Skype</md-tooltip>
+				<md-icon md-svg-icon="./img/social/skype.svg" aria-label="skype"></md-icon>
+			</md-button>
+			<md-button class="md-icon-button">
+				<md-tooltip>YouTube</md-tooltip>
+				<md-icon md-svg-icon="./img/social/youtube.svg" aria-label="youtube"></md-icon>
+			</md-button>
+		</md-toolbar>
+		<md-card-actions layout="row" layout-align="start center">
+			<md-card-icon-actions>
+				<md-button class="md-icon-button" aria-label="Refresh">
+					<md-tooltip> Refresh Content</md-tooltip>
+					<md-icon class="material-icon">refresh</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Back">
+					<md-tooltip> Go Back</md-tooltip>
+					<md-icon class="material-icon">arrow_back</md-icon>
+				</md-button>
+			</md-card-icon-actions>
+		</md-card-actions>
+		<md-card-content>
+			<div layout="row" layout-sm="row" layout-xs="column">
+				<div layout="column" flex >
+					<h3><md-icon class="material-icon">location_on</md-icon> Address</h3>
+					<address>#54, Nehru Salai,</address>
+					<address>Jafferkhanpet,</address>
+					<address>Ashok Nagar,</address>
+					<address>Chennai-83,</address>
+					<address>Tamil Nadu,</address>
+					<address>India.</address>
+					<h3><md-icon class="material-icon">email</md-icon> Email</h3>
+					<var><a href="mailto:azharameen52@gmail.com"> azharameen52@gmail.com</a></var>
+					<h3><md-icon class="material-icon">phone</md-icon> Phone</h3>
+					<var><a href="javascript:void(0);"> +91 - 8807039685</a></var>
+				</div>
+				<div layout="column" flex >
+					<form method="POST" accept-charset="utf-8" id="contactForm" name="contactForm" ng-submit="contactFormSubmit(contactForm);">
+						<md-input-container class="md-block" flex>
+							<label>Full Name</label>
+							<input type="text" ng-model="contact.name" name="name" id="name" autocomplete="off" required >
+							<div ng-messages="contactForm.name.$error" role="alert">
+		                        <div ng-message="required">Full Name is required </div>
+		                    </div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex>
+							<label>Subject</label>
+							<input type="text" ng-model="contact.subject" name="subject" id="subject" autocomplete="off" required >
+							<div ng-messages="contactForm.subject.$error" role="alert">
+		                        <div ng-message="required">Subject is required </div>
+		                    </div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex>
+							<label>Message</label>
+							<textarea ng-model="contact.message" name="message" id="message" autocomplete="off" required ></textarea>
+							<div ng-messages="contactForm.message.$error" role="alert">
+		                        <div ng-message="required">Message is required </div>
+		                    </div>
+						</md-input-container>
+
+						<md-button type="submit" class="md-raised md-primary" ng-disabled="false" aria-label="description">Contact</md-button>
+					</form>
+				</div>
+			</div>
+		</md-card-content>
+	</md-card>
+</md-content>

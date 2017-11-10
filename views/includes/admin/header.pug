@@ -1,0 +1,34 @@
+md-toolbar(class="md-whiteframe-glow-z1" md-colors="{backgroundColor: 'default-primary-500'}")
+	div(class="md-toolbar-tools docs-toolbar-tools" tabIndex="-1")
+		md-button(class="md-icon-button" ng-click="OpenLeftSideMenu()" hide-gt-sm aria-label="Toggle Right Menu" ng-if="isAuth.auth")
+			md-tooltip Click to open left side bar
+			md-icon(class="material-icon" style="color: #fff !important;" ) menu
+		div(layout="row" flex class="fill-height")
+			h2(class="md-toolbar-item md-headline") AMN Offers
+			span(flex)
+			div(class="md-toolbar-item docs-tools" layout="row")
+
+				md-menu(md-position-mode="target-right target" ng-if="isAuth.auth")
+					md-button(aria-label="profile" class="md-icon-button" ng-click="$mdMenu.open()")
+						md-icon(md-menu-origin class="material-icon" style="color: #fff !important;" ) account_circle
+					md-menu-content(width="4")
+						md-menu-item
+							md-button(href="./{{isAuth.user.usermode}}/#!/")
+								div(layout="row" flex)
+									p(flex) Account
+									md-icon(md-menu-align-target class="material-icon") account_circle
+						md-menu-item
+							md-button(disabled="disabled" ng-click="")
+								div(layout="row" flex)
+									p(flex) Settings
+									md-icon(md-menu-align-target class="material-icon") settings
+						md-menu-divider
+						md-menu-item
+							md-button(ng-click="appLogout()")
+								div(layout="row" flex)
+									p(flex) Logout
+									md-icon(md-menu-align-target class="material-icon") power_settings_new
+
+				md-button(ng-click="OpenRightSideMenu()" class="md-icon-button" aria-label="Toggle Right Menu")
+					md-tooltip Click to open left side bar
+					md-icon(class="material-icon" style="color: #fff !important;" ) menu

@@ -1,0 +1,83 @@
+doctype html
+html(lang="en" ng-app="amnOffers")
+	head
+		base(href="/")
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no")
+		meta(http-equiv="x-ua-compatible" content="ie=edge")
+		title AMN Offers
+		link(rel="icon" type="image/x-icon" href="/img/logo.jpg")
+		
+		//- Online Font Awesome
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+		link(href='//fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css')
+
+		link(href="/css/style.css" rel="stylesheet")
+		link(href="/css/angular-material.css" rel="stylesheet")
+		link(href="/css/docs.css" rel="stylesheet")
+		link(href="/css/pace.css" rel="stylesheet")
+		link(href="/css/custom.css" rel="stylesheet")
+
+	body(class="docs-body" layout="row" ng-cloak aria-label="Return Logistics" ng-controller="IntroCtrl")
+		case usermode
+			when 'admin'
+				include includes/admin/left-sidebar.pug
+			when 'user'
+				include includes/user/left-sidebar.pug
+			when 'shop'
+				include includes/shop/left-sidebar.pug
+			default
+				//- include includes/guest/left-sidebar.pug
+
+		div(layout="column" flex role="main")
+			case usermode
+				when 'admin'
+					include includes/admin/header.pug
+				when 'user'
+					include includes/user/header.pug
+				when 'shop'
+					include includes/shop/header.pug
+				default
+					include includes/guest/header.pug
+
+			md-content(md-scroll-y layout="column" flex)
+				div(flex="noshrink" ng-view class="docs-ng-view" layout-padding)
+					block content
+
+				case usermode
+					when 'admin'
+						include includes/admin/footer.pug
+					when 'user'
+						include includes/user/footer.pug
+					when 'shop'
+						include includes/shop/footer.pug
+					default
+						include includes/guest/footer.pug
+
+	//- Scripts
+	script(type="text/javascript" src="/js/modules/angular.js")
+	script(type="text/javascript" src="/js/modules/jquery.js")
+	script(type="text/javascript" src="/js/modules/angular-aria.js")
+	script(type="text/javascript" src="/js/modules/angular-messages.js")
+	script(type="text/javascript" src="/js/modules/angular-animate.js")
+	script(type="text/javascript" src="/js/modules/angular-material.js")
+	script(type="text/javascript" src="/js/modules/angular-desktop-notification.js")
+	script(type="text/javascript" src="/js/modules/angular-load.js")
+	script(type="text/javascript" src="/js/modules/angular-local-storage.js")
+	script(type="text/javascript" src="/js/modules/angular-route.js")
+	script(type="text/javascript" src="/js/modules/angular-sanitize.js")
+	script(type="text/javascript" src="/js/modules/ng-map.js")
+
+	script(src="/socket.io/socket.io.js")
+	script(src="/js/app.js")
+	script(src="/js/config.js")
+
+	case usermode
+		when 'admin'
+			include includes/admin/scripts.pug
+		when 'user'
+			include includes/user/scripts.pug
+		when 'shop'
+			include includes/shop/scripts.pug
+		default
+			include includes/guest/scripts.pug

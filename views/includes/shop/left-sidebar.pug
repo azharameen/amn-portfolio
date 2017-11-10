@@ -1,0 +1,26 @@
+md-sidenav(md-component-id="left" class="site-sidenav md-sidenav-left" md-whiteframe="2" md-is-locked-open="$mdMedia('gt-sm')" ng-if="isAuth")
+	header(class="nav-header")
+		a(class="docs-logo" href="/")
+			img(src="/img/logo.jpg" alt="")
+			h1(class="docs-logotype md-heading") AMN Offers
+
+	md-content(flex role="left sidebar" style="background: #b10c44;")
+		ul(class="docs-menu")
+			li(class="parent-list-item")
+				h2(class="menu-heading md-subhead" id="heading_s") Shop Sidebar
+				menu-link(section="section")
+					a(href="/shop#!/" class="md-button md-ink-ripple") 
+						md-icon(class="material-icon" style="color: #ec562e;") dashboard
+						| &nbsp; Dashboard
+				menu-link(section="section")
+					a(href="/shop#!/view-users" class="md-button md-ink-ripple") 
+						md-icon(class="material-icon" style="color: #b5d9fd;") people
+						| &nbsp; Users
+				menu-link(section="section")
+					a(href="/shop#!/view-shops" class="md-button md-ink-ripple") 
+						md-icon(class="material-icon" style="color: #b5d9fd;") people
+						| &nbsp; Shops
+				menu-link(section="section")
+					a(href="/shop#!/view-ads" class="md-button md-ink-ripple") 
+						md-icon(class="material-icon" style="color: #b5d9fd;") people
+						| &nbsp; Ads
