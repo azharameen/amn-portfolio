@@ -25,7 +25,7 @@ app.disable('x-powered-by');
 // express session
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-	secret: 'adingu_Kokka_Makka',
+	secret: 'adingu_Kokka_Makka_ses-s-ion',
 	resave: false,
 	saveUninitialized: true,
 	cookie: { secure: true }

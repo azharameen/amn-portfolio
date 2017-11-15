@@ -54,8 +54,8 @@ amn
             templateUrl: 'html/guest/contact.html',
         })
 
-        .when('/career', {
-            templateUrl: 'html/guest/home.html',
+        .when('/service', {
+            templateUrl: 'html/guest/service.html',
         })
 
         ;

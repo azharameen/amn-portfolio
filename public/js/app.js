@@ -83,20 +83,20 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
     };
 })
 
-.run(['$rootScope','$templateCache', 'localStorageService', '$location', '$http', 'socket', function($rootScope, $templateCache, localStorageService, $location, $http, socket){
-    // clear template cache
-    $rootScope.$on('$viewContentLoaded', function() {
-        $templateCache.removeAll();
-    });
+.run(['$rootScope','$templateCache', 'localStorageService', '$location', '$http', function($rootScope, $templateCache, localStorageService, $location, $http){
+    // // clear template cache
+    // $rootScope.$on('$viewContentLoaded', function() {
+    //     $templateCache.removeAll();
+    // });
 
-    // socket.emit('hi', 'This is a simple hi message', 'result');
-    socket.on('result', function (data) {
-        console.log(data);
-    });
+    // // socket.emit('hi', 'This is a simple hi message', 'result');
+    // socket.on('result', function (data) {
+    //     console.log(data);
+    // });
 
-    socket.on("error", function(error, callback) {
-        console.log("Error", error);
-    });
+    // socket.on("error", function(error, callback) {
+    //     console.log("Error", error);
+    // });
 
     $http.defaults.headers.common['x-access-token'] = localStorageService.get('token');
 

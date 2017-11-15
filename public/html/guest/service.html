@@ -1,0 +1,31 @@
+<md-content flex>
+	<md-card>
+		<md-toolbar class="md-toolbar-tools">
+			<h2 flex md-truncate> Service</h2>
+			<span flex></span>
+			<h2 class="md-icon-button">DB Not Connected</h2>
+		</md-toolbar>
+
+		<md-card-content>
+			<div layout="row" layout-sm="row" layout-xs="column">
+				<div layout="column" layout-sm="column" layout-xs="column" flex >
+					<h2>LiveFeeds</h2>
+					<p>Load the below script file in to your page.</p>
+					<code>URL : http://amn-portfolio.herokuapp.com/js/livefeed.js</code>
+				</div>
+			</div>
+
+			<div layout="row" layout-sm="row" layout-xs="column">
+				<h2>Cheat Code</h2>
+				<p>Fist get your secret key and then connect to the livefeed service. Initialize it after page loaded completely.<br>
+				var feed = new LiveFeed(secret key);</p>
+
+				<p><b>LiveFeed</b> send data to all who are connected to your project. receive the data as 'livefeed_cb' callback. it won't save, only send and receive at the current time.</p>
+
+				<p><b>SendFeed</b> send data to all who are connected to your project. receive the data as 'receive_feed' callback. it will be saved. can send and receive data at any time, data can be stored and used later. Note: Same key request will override the data.</p>
+				
+				<p><b>SendMsg</b> send data to a particular user who is connected to your project. receive the data as 'receive_msg' callback. it won't be saved. can send and receive data only current time, data can't be stored and nor used later. Note: User id should be passed so to send only to particular user.</p>
+			</div>
+		</md-card-content>
+	</md-card>
+</md-content>
