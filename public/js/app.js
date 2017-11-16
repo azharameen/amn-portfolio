@@ -84,10 +84,10 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
 })
 
 .run(['$rootScope','$templateCache', 'localStorageService', '$location', '$http', function($rootScope, $templateCache, localStorageService, $location, $http){
-    // // clear template cache
-    // $rootScope.$on('$viewContentLoaded', function() {
-    //     $templateCache.removeAll();
-    // });
+    // clear template cache
+    $rootScope.$on('$viewContentLoaded', function() {
+        $templateCache.removeAll();
+    });
 
     // // socket.emit('hi', 'This is a simple hi message', 'result');
     // socket.on('result', function (data) {

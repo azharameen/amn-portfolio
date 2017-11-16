@@ -66,24 +66,24 @@ module.exports = function (io) {
 			// console.log('fetch -> '+query.sql);
 		})
 
-		.on('send_feed', function (key, feed) {
+		.on('send_feed', function (callback, key, feed) {
 			var query = db.query('INSERT INTO `livefeed` (`project`, `key`, `data`) VALUES ("'+ client.decoded_token.usermode +'", "'+client.decoded_token.usermode+'_'+key+'", "'+ feed +'") ON DUPLICATE KEY UPDATE `data`="'+feed+'"', function (err, rows, fields) {
 				if (err) {
-					response('failure', err, 'receive_feed');
+					response('failure', err, callback);
 					return;
 				}
 				var query1 = db.query('select `data` from `livefeed` where `project`="'+ client.decoded_token.usermode +'"', function (err, rows, fields) {
 					if (err) {
-						response('failure', err, 'receive_feed');
+						response('failure', err, callback);
 						return;
 					}
-					response('success', rows, 'receive_feed');
+					response('success', rows, callback);
 				});
 			});
 		})
 
-		.on('livefeed', function (data) {
-			io.sockets.emit('livefeed_cb', data);
+		.on('livefeed', function (callback, data) {
+			io.sockets.emit(callback, data);
 			console.log(data);
 		})
 
@@ -92,8 +92,8 @@ module.exports = function (io) {
 			console.log(data);
 		})
 
-		.on('send_msg', function (key, data) {
-			io.sockets.connected[key].emit('receive_msg', data);
+		.on('send_msg', function (callback, key, data) {
+			io.sockets.connected[key].emit(callback, data);
 		})
 
 		.on('disconnect', function (data) {

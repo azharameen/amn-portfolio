@@ -1,7 +1,7 @@
-var base_url = 'http://192.168.1.101:8080/';
+var base_url = 'http://192.168.1.101:8080';
 
 var imported = document.createElement('script');
-imported.src = '/socket.io/socket.io.js';
+imported.src = base_url+'/socket.io/socket.io.js';
 imported.onerror = function () {
 	console.error('Error on loading LiveFeed...');
 };
@@ -16,17 +16,14 @@ function LiveFeed(token) {
 		'query' : 'token='+token
 	});
 
-	this.livefeed = function(data) {
+	this.livefeed = function(callback, data) {
 		console.info('LiveFeed Message');
 		if(data){
-			this.listen.emit('livefeed', data)
+			this.listen.emit('livefeed', callback, data)
 		}else{
 			console.error('invalid parameter set on `livefeed`');
 		}
 	};
-		this.listen.on('livefeed_cb', function (data) {
-			this.livefeed_cb = data;
-		});
 
 	this.insert = function(callback, table, data) {
 		console.info('LiveFeed Message');
@@ -55,30 +52,22 @@ function LiveFeed(token) {
 		}
 	};
 
-	this.send_msg = function(key, data) {
+	this.send_msg = function(callback, key, data) {
 		console.info('LiveFeed Message');
 		if(key && data){
-			this.listen.emit('send_msg', key, data);
+			this.listen.emit('send_msg', callback, key, data);
 		}else{
 			console.error('invalid parameters set on `send_msg`');
 		}
 	};
 
-		this.listen.on('receive_msg', function (data) {
-			this.receive_msg = data;
-		});
-
-	this.send_feed = function(key, feed) {
+	this.send_feed = function(callback, key, feed) {
 		if(key && feed){
-			this.listen.emit('send_feed', key, feed);
+			this.listen.emit('send_feed', callback, key, feed);
 		}else{
 			console.error('invalid parameters set on `send_feed`');
 		}
 	};
-
-		this.listen.on('receive_feed', function (data) {
-			this.receive_feed = data;
-		});
 
 	this.broadcast = function(data) {
 		this.listen.emit('broadcast', data);
@@ -92,14 +81,13 @@ function LiveFeed(token) {
 		console.error("Error: ", error);
 	});
 
-	// Function.prototype.listen = this.listen;
 }
 
 window.onload = function() {
 
 	var amn = new LiveFeed('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmV0dXJuIExvZ2lzdGljcyIsInBhdGgiOiJSZXR1cm5fTG9naXN0aWNzIiwidXJsIjoiaHR0cDovL2xvY2FsaG9zdC90ZW1wL3RyYW5zL2lvLmh0bWwiLCJ0YWJsZSI6InJsIiwiaWF0IjoxNTEwMDQ5MTg4fQ.KuB9EdHCOGVScEQ4EiQca8qQdP7QA1Q0vQIOIN45-Kk');
 
-	amn.livefeed('Hello from the broadcast');
+	amn.livefeed('livefeed_cb', 'Hello from the broadcast');
 	amn.listen.on('livefeed_cb', function (data) {
 		console.log('called that mode worked', data);
 	});

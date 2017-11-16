@@ -7,25 +7,81 @@
 		</md-toolbar>
 
 		<md-card-content>
-			<div layout="column" layout-sm="column" layout-xs="column" flex >
-				<h2>LiveFeeds Installation</h2>
-				<p>Load the below script file in to your page.</p>
-				<code>URL : http://amn-portfolio.herokuapp.com/js/livefeed.js</code>
-			
-				<h2>Cheat Code</h2>
-				<p>Fist get your secret key and then connect to the livefeed service. Initialize it after page loaded completely.</p>
-				<code>var feed = new LiveFeed(secret key);</code>
 
-				<p><b>LiveFeed</b> send data to all who are connected to your project. receive the data as 'livefeed_cb' callback. it won't save, only send and receive at the current time.
-				<code>feed.livefeed(data);</code>
-				to listen the livefeed coming fom others then use
-				<code>feed.listen.on('livefeed_cb', function);</code>
-				Here livefeed is function and data is value to be sent.</p>
+			<md-tabs md-selected="0" md-dynamic-height md-border-bottom md-stretch-tabs="auto">
+				<md-tab label="Installation" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<h2>LiveFeeds Installation</h2>
+						<p>Include script file in your page.</p>
+						<code> &#x3C;script src=&#x22;http://amn-portfolio.herokuapp.com/js/livefeed.js&#x22;&#x3E;&#x3C;/script&#x3E; </code>
 
-				<p><b>SendFeed</b> send data to all who are connected to your project. receive the data as 'receive_feed' callback. it will be saved. can send and receive data at any time, data can be stored and used later. Note: Same key request will override the data.</p>
-				
-				<p><b>SendMsg</b> send data to a particular user who is connected to your project. receive the data as 'receive_msg' callback. it won't be saved. can send and receive data only current time, data can't be stored and nor used later. Note: User id should be passed so to send only to particular user.</p>
-			</div>
+						<p>Initiate the LiveFeed class with token.</p>
+						<code>var feed = new LiveFeed(secret_key);</code>
+						<p>register to get servet_key so to use our service.</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="livefeed" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>LiveFeed</b> send data to all who are connected to your project. receive the data as callback. it won't save, only send and receive at the current time.</p>
+						<code>feed.livefeed(callback, data);</code><br>
+						<p>Here data is the message that you want to pass to other users connected. set your callback parametr to listen</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>data to be received and callback that you have set</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="SendFeed" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>SendFeed</b> send data to all who are connected to your project. receive the data as callback. it will be saved. can send and receive data at any time, data can be stored and used later. Note: Same key request will override the data.</p>
+						<code>feed.send_feed(callback, key, data);</code><br>
+						<p>Here the term key defines any particular user or category in your project, and data defines your message to be saved and passed.</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>callback is a method to receive your temp feeds. data is your temp value</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="SendMsg" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>SendMsg</b> send data to a particular user who is connected to your project. receive the data as callback. it won't be saved. can send and receive data only current time, data can't be stored and nor used later. Note: User id should be passed so to send only to particular user.</p>
+						<code>feed.send_msg(callback, key, data);</code><br>
+						<p>Here the term key defines any particular user or browser in your project, and data defines your message to be saved and passed.</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>callback is a method to receive your temp feeds. data is your temp value</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="Insert" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>Insert</b> method use to store data for future use. Use only object to store data. you can set your own call back function. Note: Data should be passed only as objects, key and value.</p>
+						<code>feed.insert(callback, table, data);</code><br>
+						<p>data - the data you want to insert, table - specify the table you want to use. set your callback parametr to listen.</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>callback is a method to check your data is stored. data is your insert status.</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="Update" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>Update</b> method use to update or override data which already stored. Use only object to store data. you can set your own call back function and give a condition as last parameter. Note: Data should be passed only as objects, key and value.</p>
+						<code>feed.update(callback, table, data, where);</code>
+						<p>data - the data you want to update, table - specify the table you want to use, where - the conditions you want to set. set your callback parametr to listen.</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>callback is a method to check your data is updated. data is your update status</p>
+					</md-tab-body>
+				</md-tab>
+
+				<md-tab label="Fetch" md-on-select="" md-on-deselect="">
+					<md-tab-body>
+						<p><b>Fetch</b> method used to retrive stored data. set callback function to get the stored data. Note it will send all the data stored.</p>
+						<code>feed.send_msg(callback, select, table, where);</code>
+						<p>select - the fields you want to fetch, table - specify the table you want to use, where - the conditions you want to set. set your callback parametr to listen.</p>
+						<code>feed.listen.on(callback, data);</code>
+						<p>callback is a method to receive your stored data. data is your values</p>
+					</md-tab-body>
+				</md-tab>
+
+			</md-tabs>
 		</md-card-content>
 	</md-card>
 </md-content>
