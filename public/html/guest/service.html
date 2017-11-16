@@ -7,20 +7,20 @@
 		</md-toolbar>
 
 		<md-card-content>
-			<div layout="row" layout-sm="row" layout-xs="column">
-				<div layout="column" layout-sm="column" layout-xs="column" flex >
-					<h2>LiveFeeds</h2>
-					<p>Load the below script file in to your page.</p>
-					<code>URL : http://amn-portfolio.herokuapp.com/js/livefeed.js</code>
-				</div>
-			</div>
-
-			<div layout="row" layout-sm="row" layout-xs="column">
+			<div layout="column" layout-sm="column" layout-xs="column" flex >
+				<h2>LiveFeeds Installation</h2>
+				<p>Load the below script file in to your page.</p>
+				<code>URL : http://amn-portfolio.herokuapp.com/js/livefeed.js</code>
+			
 				<h2>Cheat Code</h2>
-				<p>Fist get your secret key and then connect to the livefeed service. Initialize it after page loaded completely.<br>
-				var feed = new LiveFeed(secret key);</p>
+				<p>Fist get your secret key and then connect to the livefeed service. Initialize it after page loaded completely.</p>
+				<code>var feed = new LiveFeed(secret key);</code>
 
-				<p><b>LiveFeed</b> send data to all who are connected to your project. receive the data as 'livefeed_cb' callback. it won't save, only send and receive at the current time.</p>
+				<p><b>LiveFeed</b> send data to all who are connected to your project. receive the data as 'livefeed_cb' callback. it won't save, only send and receive at the current time.
+				<code>feed.livefeed(data);</code>
+				to listen the livefeed coming fom others then use
+				<code>feed.listen.on('livefeed_cb', function);</code>
+				Here livefeed is function and data is value to be sent.</p>
 
 				<p><b>SendFeed</b> send data to all who are connected to your project. receive the data as 'receive_feed' callback. it will be saved. can send and receive data at any time, data can be stored and used later. Note: Same key request will override the data.</p>
 				
