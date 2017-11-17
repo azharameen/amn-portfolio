@@ -127,7 +127,6 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
     $httpProvider.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
 }])
 
-
 .controller('IntroCtrl', ['$scope', '$rootScope', '$timeout', '$mdSidenav', '$log', '$animateCss', '$mdUtil', '$element', 'localStorageService', '$http', '$location', function ($scope, $rootScope, $timeout, $mdSidenav, $log, $animateCss, $mdUtil, $element, localStorageService, $http, $location) {
 
     $scope.login = {};
@@ -139,6 +138,19 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
 				$log.debug("toggle left is done");
 			});
 	};
+
+
+    $scope.genSecretKeyFormSubmit = function (form) {
+        console.log($scope.secretKey);
+        $http.post('/secretKey', $scope.secretKey )
+        .then(function (data, status, headers, config) {
+            if (data.data.success) {
+                console.log(data.data.token);
+            } else {
+                console.log('token could not be generated');
+            }
+        });
+    };
 
     $scope.appLogout = function () {
         $rootScope.isAuth = {};
@@ -155,6 +167,7 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
 
 
 .controller('AuthCtrl', ['$scope', '$http', 'localStorageService', '$location', function ($scope, $http, localStorageService, $location) {
+
     $scope.loginFormSubmit = function (form) {
         $http.post('/auth', $scope.login )
         .then(function (data, status, headers, config) {
@@ -168,6 +181,7 @@ var amn = angular.module('amnOffers', ['ngAnimate', 'ngRoute', 'ngMaterial', 'ng
             }
         });
     };
+
 
 }])
 

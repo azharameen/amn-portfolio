@@ -48,11 +48,43 @@ amn
 
 }])
 
+
+
+
+.controller('DashCtrl', ['$scope', '$timeout', '$log', '$mdToast', '$mdDialog', 'localStorageService', '$http', '$location', function ($scope, $timeout, $log, $mdToast, $mdDialog, localStorageService, $http, $location) {
+
+    $scope.genSecretKeyFormSubmit = function (form) {
+        console.log($scope.secretKey);
+        $http.post('/secretKey', $scope.secretKey )
+        .then(function (data, status, headers, config) {
+            if (data.data.success) {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(document.body)
+                        .clickOutsideToClose(true)
+                        .title('Toke Generated')
+                        .textContent("TOKEN: "+data.data.token)
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('Got it!')
+                );
+            } else {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('token could not be generated')
+                        .position("top right")
+                        .hideDelay(3000)
+                );
+            }
+        });
+    };
+}])
+
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'html/admin/dashboard.html'
+            templateUrl: 'html/admin/dashboard.html',
+            controller: 'DashCtrl'
         })
 
         .when('/view-users', {

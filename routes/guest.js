@@ -42,6 +42,20 @@ router.post('/auth', function (req, res) {
 	}
 });
 
+router.post('/secretKey', function (req, res) {
+	if(req.body.pro_name){
+		var token = jwt.sign({
+			name : req.body.pro_name,
+			path : req.body.pro_name.replace(/\s/g, '_'),
+			url : req.body.pro_url,
+			table : req.body.table_name
+		}, 'appAMeeN');
+		res.json({success:true, token:token});
+	}else{
+		res.json({success:false, msg:'Username or Password in invalid'});
+	}
+});
+
 router.post('/auth-check', function(req, res, next) {
 	var token = req.body.token || req.params.token || req.headers['x-access-token'];
 	jwt.verify(token, 'appAMeeN', function(err, decoded) {			

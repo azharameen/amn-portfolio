@@ -26,19 +26,28 @@
         </md-toolbar>
 
 		<md-card-content>
-			<form method="POST" accept-charset="utf-8" id="loginForm" name="loginForm" ng-submit="loginFormSubmit(loginForm);">
+			<form method="POST" accept-charset="utf-8" id="genSecretKeyForm" name="genSecretKeyForm" ng-submit="genSecretKeyFormSubmit(genSecretKeyForm);">
 				<md-input-container class="md-block" flex>
-					<label>Username</label>
-					<input type="text" ng-model="login.user" name="user" id="user" autocomplete="off" required >
-					<div ng-messages="loginForm.user.$error" role="alert">
-                        <div ng-message="required">Username is required </div>
+					<label>Project Name</label>
+					<input type="text" ng-model="secretKey.pro_name" name="pro_name" id="pro_name" autocomplete="off" required >
+					<div ng-messages="genSecretKeyForm.pro_name.$error" role="alert">
+                        <div ng-message="required">Project Name is required </div>
                     </div>
 				</md-input-container>
+
 				<md-input-container class="md-block" flex>
-					<label>Password</label>
-					<input type="text" ng-model="login.pass" name="pass" id="pass" autocomplete="off" required >
-					<div ng-messages="loginForm.pass.$error" role="alert">
-                        <div ng-message="required">Password is required </div>
+					<label>Project URL</label>
+					<input type="text" ng-model="secretKey.pro_url" name="pro_url" id="pro_url" autocomplete="off" required >
+					<div ng-messages="genSecretKeyForm.pro_url.$error" role="alert">
+                        <div ng-message="required">Project URL is required </div>
+                    </div>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex>
+					<label>Table Name</label>
+					<input type="text" ng-model="secretKey.table_name" name="table_name" id="table_name" autocomplete="off" required >
+					<div ng-messages="genSecretKeyForm.table_name.$error" role="alert">
+                        <div ng-message="required">Table Name is required </div>
                     </div>
 				</md-input-container>
 
