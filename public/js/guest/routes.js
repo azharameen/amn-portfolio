@@ -54,10 +54,6 @@ amn
             templateUrl: 'html/guest/contact.html',
         })
 
-        .when('/service', {
-            templateUrl: 'html/guest/service.html',
-        })
-
         ;
 
     $routeProvider.otherwise('/');

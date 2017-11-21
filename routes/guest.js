@@ -35,7 +35,7 @@ router.post('/auth', function (req, res) {
 	}
 
 	if(data.usermode){
-		var token = jwt.sign(data, 'appAMeeN');
+		var token = jwt.sign(data, 'adingu_Kokka_Makka_ses-s-ion');
 		res.json({success:true, token:token, userdata:data});
 	}else{
 		res.json({success:false, msg:'Username or Password in invalid'});
@@ -49,7 +49,7 @@ router.post('/secretKey', function (req, res) {
 			path : req.body.pro_name.replace(/\s/g, '_'),
 			url : req.body.pro_url,
 			table : req.body.table_name
-		}, 'appAMeeN');
+		}, 'adingu_Kokka_Makka_ses-s-ion');
 		res.json({success:true, token:token});
 	}else{
 		res.json({success:false, msg:'Username or Password in invalid'});
@@ -58,7 +58,7 @@ router.post('/secretKey', function (req, res) {
 
 router.post('/auth-check', function(req, res, next) {
 	var token = req.body.token || req.params.token || req.headers['x-access-token'];
-	jwt.verify(token, 'appAMeeN', function(err, decoded) {			
+	jwt.verify(token, 'adingu_Kokka_Makka_ses-s-ion', function(err, decoded) {			
 		if (err) {
 			res.json({status:'failure', data:'Failed to authenticate token.'});
 		} else {

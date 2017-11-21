@@ -31,7 +31,7 @@ server.on('listening', onListening);
 var io = require('socket.io')(server);
 var socketioJwt = require('socketio-jwt');
 io.use(socketioJwt.authorize({
-  secret: 'appAMeeN',
+  secret: 'adingu_Kokka_Makka_ses-s-ion',
   handshake: true
 }));
 require('../plugins/io.js')(io);
